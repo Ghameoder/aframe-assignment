@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>First A-frame Project G-Help</title>
+    </head>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <body>
+        <a-scene>
+            <!-- Sky and ground -->
+            <a-sky color="#84b8ff"></a-sky>
+            <a-plane position="0 0 0" rotation="-90 0 0" width="40" height="40" color="#1ea33b"></a-plane>
+
+            <!-- Pathway -->
+            <a-box position="0 0.03 -6" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
+            <a-box position="0 0.03 -5" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
+            <a-box position="0 0.03 -4" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
+            <a-box position="0 0.03 -3" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
+            <a-box position="0 0.03 -2" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
+            <a-box position="0 0.03 -1" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
+            <a-box position="0 0.03 0" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
+
+            <!-- Gazebo base -->
+            <a-cylinder position="0 0.15 -10" radius="4" height="0.3" color="#d7d2c8"></a-cylinder>
+            <a-cylinder position="0 0.3 -10" radius="3.3" height="0.1" color="#efe9df"></a-cylinder>
+
+            <!-- Gazebo columns -->
+            <a-cylinder position="2.3 1.5 -8.2" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
+            <a-cylinder position="-2.3 1.5 -8.2" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
+            <a-cylinder position="3.0 1.5 -10" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
+            <a-cylinder position="-3.0 1.5 -10" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
+            <a-cylinder position="2.3 1.5 -11.8" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
+            <a-cylinder position="-2.3 1.5 -11.8" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
+
+            <!-- Gazebo railing (hollow rings with entry gap aligned to pathway) -->
+            <a-entity position="0 1.0 -10" rotation="90 0 0" geometry="primitive: torus; radius: 2.8; radiusTubular: 0.05; arc: 310" material="color: #5ccf7b"></a-entity>
+            <a-entity position="0 0.6 -10" rotation="90 0 0" geometry="primitive: torus; radius: 2.8; radiusTubular: 0.05; arc: 310" material="color: #5ccf7b"></a-entity>
+
+            <!-- Outer wall around gazebo with entry gap aligned to pathway -->
+            <a-cylinder position="0 1.1 -10" radius="5.4" height="2.2" theta-start="25" theta-length="310" open-ended="true" material="color: #79f29f; side: double"></a-cylinder>
+
+            <!-- Gazebo roof -->
+            <a-cylinder position="0 3.1 -10" radius="2.9" height="0.15" color="#5cd678"></a-cylinder>
+            <a-cone position="0 4.1 -10" radius-bottom="3.2" radius-top="0.1" height="2" color="#4fcf6b"></a-cone>
+
+            <!-- Dining table under gazebo -->
+            <a-cylinder position="0 0.95 -10" radius="1.1" height="0.1" color="#8b5e3c"></a-cylinder>
+            <a-cylinder position="0 0.5 -10" radius="0.12" height="0.9" color="#6d4a31"></a-cylinder>
+            <a-cylinder position="0 0.1 -10" radius="0.35" height="0.05" color="#6d4a31"></a-cylinder>
+
+            <!-- Chairs -->
+            <a-box position="0 0.35 -8.6" depth="0.6" width="0.6" height="0.1" rotation="0 180 0" color="#7a4a2a"></a-box>
+            <a-box position="0 0.85 -8.9" depth="0.1" width="0.6" height="1" rotation="0 180 0" color="#7a4a2a"></a-box>
+            <a-box position="0 0.35 -11.4" depth="0.6" width="0.6" height="0.1" rotation="0 0 0" color="#7a4a2a"></a-box>
+            <a-box position="0 0.85 -11.1" depth="0.1" width="0.6" height="1" rotation="0 0 0" color="#7a4a2a"></a-box>
+            <a-box position="1.5 0.35 -10" depth="0.6" width="0.6" height="0.1" rotation="0 -90 0" color="#7a4a2a"></a-box>
+            <a-box position="1.8 0.85 -10" depth="0.1" width="0.6" height="1" rotation="0 -90 0" color="#7a4a2a"></a-box>
+            <a-box position="-1.5 0.35 -10" depth="0.6" width="0.6" height="0.1" rotation="0 90 0" color="#7a4a2a"></a-box>
+            <a-box position="-1.8 0.85 -10" depth="0.1" width="0.6" height="1" rotation="0 90 0" color="#7a4a2a"></a-box>
+
+            <!-- Milo can -->
+            <a-cylinder position="-0.35 1.08 -10" radius="0.18" height="0.32" color="#1f7a32"></a-cylinder>
+            <a-cylinder position="-0.35 1.25 -10" radius="0.19" height="0.02" color="#0f4f1f"></a-cylinder>
+
+            <!-- Milk can -->
+            <a-cylinder position="0.25 1.06 -9.7" radius="0.16" height="0.28" color="#e5e5e5"></a-cylinder>
+            <a-cylinder position="0.25 1.21 -9.7" radius="0.17" height="0.02" color="#cfcfcf"></a-cylinder>
+
+            <!-- Mugs with hot chocolate -->
+            <a-cylinder position="0.45 1.03 -10.2" radius="0.1" height="0.14" color="#ffffff"></a-cylinder>
+            <a-torus position="0.54 1.04 -10.2" radius="0.045" radius-tubular="0.01" rotation="0 0 90" color="#ffffff"></a-torus>
+            <a-cylinder position="0.45 1.09 -10.2" radius="0.09" height="0.02" color="#6b3f2a"></a-cylinder>
+
+            <a-cylinder position="-0.6 1.03 -10.15" radius="0.1" height="0.14" color="#ffffff"></a-cylinder>
+            <a-torus position="-0.69 1.04 -10.15" radius="0.045" radius-tubular="0.01" rotation="0 0 90" color="#ffffff"></a-torus>
+            <a-cylinder position="-0.6 1.09 -10.15" radius="0.09" height="0.02" color="#6b3f2a"></a-cylinder>
+
+            <!-- Steps -->
+            <a-box position="0 0.05 -8.1" width="2.4" height="0.1" depth="0.6" color="#d7d2c8"></a-box>
+            <a-box position="0 0.1 -8.7" width="2.0" height="0.1" depth="0.6" color="#efe9df"></a-box>
+
+            <!-- Lighting -->
+            <a-entity light="type: ambient; intensity: 0.7"></a-entity>
+            <a-entity light="type: directional; intensity: 0.7" position="-2 6 2"></a-entity>
+        </a-scene>
+    </body>
+</html>
