@@ -1,86 +1,312 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>First A-frame Project G-Help</title>
-    </head>
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <body>
-        <a-scene>
-            <!-- Sky and ground -->
-            <a-sky color="#84b8ff"></a-sky>
-            <a-plane position="0 0 0" rotation="-90 0 0" width="40" height="40" color="#1ea33b"></a-plane>
 
-            <!-- Pathway -->
-            <a-box position="0 0.03 -6" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
-            <a-box position="0 0.03 -5" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
-            <a-box position="0 0.03 -4" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
-            <a-box position="0 0.03 -3" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
-            <a-box position="0 0.03 -2" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
-            <a-box position="0 0.03 -1" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
-            <a-box position="0 0.03 0" width="2" height="0.06" depth="1" color="#d9d9d9"></a-box>
+<head>
+    <title>First A-frame Project G-Help</title>
+    <meta name="description" content="A beautiful A-Frame 3D gazebo scene">
+</head>
+<script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
 
-            <!-- Gazebo base -->
-            <a-cylinder position="0 0.15 -10" radius="4" height="0.3" color="#d7d2c8"></a-cylinder>
-            <a-cylinder position="0 0.3 -10" radius="3.3" height="0.1" color="#efe9df"></a-cylinder>
+<body>
+    <a-scene fog="type: linear; color: #b8d8ff; near: 20; far: 60">
+        <a-assets>
+            <img id="brickTex" src="textures/bricks.jpg">
+            <img id="pavementTex" src="textures/pavement.jpg">
+            <img id="grassTex" src="textures/grass.png">
+        </a-assets>
 
-            <!-- Gazebo columns -->
-            <a-cylinder position="2.3 1.5 -8.2" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
-            <a-cylinder position="-2.3 1.5 -8.2" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
-            <a-cylinder position="3.0 1.5 -10" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
-            <a-cylinder position="-3.0 1.5 -10" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
-            <a-cylinder position="2.3 1.5 -11.8" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
-            <a-cylinder position="-2.3 1.5 -11.8" radius="0.12" height="3" color="#6fdc8a"></a-cylinder>
+        <!-- Sky gradient achieved with a large sphere -->
+        <a-sky color="#5aacff"></a-sky>
 
-            <!-- Gazebo railing (hollow rings with entry gap aligned to pathway) -->
-            <a-entity position="0 1.0 -10" rotation="90 0 0" geometry="primitive: torus; radius: 2.8; radiusTubular: 0.05; arc: 310" material="color: #5ccf7b"></a-entity>
-            <a-entity position="0 0.6 -10" rotation="90 0 0" geometry="primitive: torus; radius: 2.8; radiusTubular: 0.05; arc: 310" material="color: #5ccf7b"></a-entity>
+        <!-- Distant horizon haze layer -->
+        <a-sphere position="0 0 0" radius="55" side="back"
+            material="color: #c9e8ff; opacity: 0.35; transparent: true; shader: flat">
+        </a-sphere>
 
-            <!-- Outer wall around gazebo with entry gap aligned to pathway -->
-            <a-cylinder position="0 1.1 -10" radius="5.4" height="2.2" theta-start="25" theta-length="310" open-ended="true" material="color: #79f29f; side: double"></a-cylinder>
+        <!-- Ground – grass texture -->
+        <a-plane position="0 0 0" rotation="-90 0 0" width="60" height="60"
+            material="src: #grassTex; repeat: 20 20; roughness: 1; metalness: 0">
+        </a-plane>
 
-            <!-- Gazebo roof -->
-            <a-cylinder position="0 3.1 -10" radius="2.9" height="0.15" color="#5cd678"></a-cylinder>
-            <a-cone position="0 4.1 -10" radius-bottom="3.2" radius-top="0.1" height="2" color="#4fcf6b"></a-cone>
 
-            <!-- Dining table under gazebo -->
-            <a-cylinder position="0 0.95 -10" radius="1.1" height="0.1" color="#8b5e3c"></a-cylinder>
-            <a-cylinder position="0 0.5 -10" radius="0.12" height="0.9" color="#6d4a31"></a-cylinder>
-            <a-cylinder position="0 0.1 -10" radius="0.35" height="0.05" color="#6d4a31"></a-cylinder>
+        <!-- ===== PATHWAY ===== -->
+        <a-box position="0 0.03 -1" width="2" height="0.06" depth="1"
+            material="src: #pavementTex; repeat: 1 1; color: #cccccc"></a-box>
+        <a-box position="0 0.03 -2" width="2" height="0.06" depth="1"
+            material="src: #pavementTex; repeat: 1 1; color: #cccccc"></a-box>
+        <a-box position="0 0.03 -3" width="2" height="0.06" depth="1"
+            material="src: #pavementTex; repeat: 1 1; color: #cccccc"></a-box>
+        <a-box position="0 0.03 -4" width="2" height="0.06" depth="1"
+            material="src: #pavementTex; repeat: 1 1; color: #cccccc"></a-box>
+        <a-box position="0 0.03 -5" width="2" height="0.06" depth="1"
+            material="src: #pavementTex; repeat: 1 1; color: #cccccc"></a-box>
+        <a-box position="0 0.03 -6" width="2" height="0.06" depth="1"
+            material="src: #pavementTex; repeat: 1 1; color: #cccccc"></a-box>
+        <a-box position="0 0.03 -7" width="2" height="0.06" depth="1"
+            material="src: #pavementTex; repeat: 1 1; color: #cccccc"></a-box>
 
-            <!-- Chairs -->
-            <a-box position="0 0.35 -8.6" depth="0.6" width="0.6" height="0.1" rotation="0 180 0" color="#7a4a2a"></a-box>
-            <a-box position="0 0.85 -8.9" depth="0.1" width="0.6" height="1" rotation="0 180 0" color="#7a4a2a"></a-box>
-            <a-box position="0 0.35 -11.4" depth="0.6" width="0.6" height="0.1" rotation="0 0 0" color="#7a4a2a"></a-box>
-            <a-box position="0 0.85 -11.1" depth="0.1" width="0.6" height="1" rotation="0 0 0" color="#7a4a2a"></a-box>
-            <a-box position="1.5 0.35 -10" depth="0.6" width="0.6" height="0.1" rotation="0 -90 0" color="#7a4a2a"></a-box>
-            <a-box position="1.8 0.85 -10" depth="0.1" width="0.6" height="1" rotation="0 -90 0" color="#7a4a2a"></a-box>
-            <a-box position="-1.5 0.35 -10" depth="0.6" width="0.6" height="0.1" rotation="0 90 0" color="#7a4a2a"></a-box>
-            <a-box position="-1.8 0.85 -10" depth="0.1" width="0.6" height="1" rotation="0 90 0" color="#7a4a2a"></a-box>
+        <!-- ===== STEPS ===== -->
+        <a-box position="0 0.05 -8.1" width="2.8" height="0.10" depth="0.7"
+            material="src: #pavementTex; repeat: 1.5 0.5; color: #e0dbd0"></a-box>
+        <a-box position="0 0.13 -8.7" width="2.4" height="0.10" depth="0.7"
+            material="src: #pavementTex; repeat: 1.2 0.5; color: #eee9e0"></a-box>
 
-            <!-- Milo can -->
-            <a-cylinder position="-0.35 1.08 -10" radius="0.18" height="0.32" color="#1f7a32"></a-cylinder>
-            <a-cylinder position="-0.35 1.25 -10" radius="0.19" height="0.02" color="#0f4f1f"></a-cylinder>
+        <!-- ===== GAZEBO BASE ===== -->
+        <a-cylinder position="0 0.15 -10" radius="4" height="0.30"
+            material="src: #pavementTex; repeat: 4 1; color: #dad5c8"></a-cylinder>
+        <a-cylinder position="0 0.31 -10" radius="3.4" height="0.10"
+            material="src: #pavementTex; repeat: 3 0.5; color: #eee9df"></a-cylinder>
 
-            <!-- Milk can -->
-            <a-cylinder position="0.25 1.06 -9.7" radius="0.16" height="0.28" color="#e5e5e5"></a-cylinder>
-            <a-cylinder position="0.25 1.21 -9.7" radius="0.17" height="0.02" color="#cfcfcf"></a-cylinder>
+        <!-- ===== OUTER BRICK WALL (texture error fixed – attrs inside geometry) ===== -->
+        <a-entity
+            geometry="primitive: cylinder; radius: 5.4; height: 2.2; thetaStart: 25; thetaLength: 310; openEnded: true; segmentsRadial: 36"
+            material="src: #brickTex; side: double; repeat: 8 1" position="0 1.1 -10">
+        </a-entity>
 
-            <!-- Mugs with hot chocolate -->
-            <a-cylinder position="0.45 1.03 -10.2" radius="0.1" height="0.14" color="#ffffff"></a-cylinder>
-            <a-torus position="0.54 1.04 -10.2" radius="0.045" radius-tubular="0.01" rotation="0 0 90" color="#ffffff"></a-torus>
-            <a-cylinder position="0.45 1.09 -10.2" radius="0.09" height="0.02" color="#6b3f2a"></a-cylinder>
+        <!-- ===== GAZEBO COLUMNS ===== -->
+        <a-cylinder position=" 2.3 1.5  -8.2" radius="0.13" height="3" color="#f0ebe0"
+            material="roughness:0.6; metalness:0.1"></a-cylinder>
+        <a-cylinder position="-2.3 1.5  -8.2" radius="0.13" height="3" color="#f0ebe0"
+            material="roughness:0.6; metalness:0.1"></a-cylinder>
+        <a-cylinder position=" 3.0 1.5 -10" radius="0.13" height="3" color="#f0ebe0"
+            material="roughness:0.6; metalness:0.1"></a-cylinder>
+        <a-cylinder position="-3.0 1.5 -10" radius="0.13" height="3" color="#f0ebe0"
+            material="roughness:0.6; metalness:0.1"></a-cylinder>
+        <a-cylinder position=" 2.3 1.5 -11.8" radius="0.13" height="3" color="#f0ebe0"
+            material="roughness:0.6; metalness:0.1"></a-cylinder>
+        <a-cylinder position="-2.3 1.5 -11.8" radius="0.13" height="3" color="#f0ebe0"
+            material="roughness:0.6; metalness:0.1"></a-cylinder>
 
-            <a-cylinder position="-0.6 1.03 -10.15" radius="0.1" height="0.14" color="#ffffff"></a-cylinder>
-            <a-torus position="-0.69 1.04 -10.15" radius="0.045" radius-tubular="0.01" rotation="0 0 90" color="#ffffff"></a-torus>
-            <a-cylinder position="-0.6 1.09 -10.15" radius="0.09" height="0.02" color="#6b3f2a"></a-cylinder>
+        <!-- Column caps (decorative tops) -->
+        <a-cylinder position=" 2.3 3.06  -8.2" radius="0.18" height="0.12" color="#d4cfc5"></a-cylinder>
+        <a-cylinder position="-2.3 3.06  -8.2" radius="0.18" height="0.12" color="#d4cfc5"></a-cylinder>
+        <a-cylinder position=" 3.0 3.06 -10" radius="0.18" height="0.12" color="#d4cfc5"></a-cylinder>
+        <a-cylinder position="-3.0 3.06 -10" radius="0.18" height="0.12" color="#d4cfc5"></a-cylinder>
+        <a-cylinder position=" 2.3 3.06 -11.8" radius="0.18" height="0.12" color="#d4cfc5"></a-cylinder>
+        <a-cylinder position="-2.3 3.06 -11.8" radius="0.18" height="0.12" color="#d4cfc5"></a-cylinder>
 
-            <!-- Steps -->
-            <a-box position="0 0.05 -8.1" width="2.4" height="0.1" depth="0.6" color="#d7d2c8"></a-box>
-            <a-box position="0 0.1 -8.7" width="2.0" height="0.1" depth="0.6" color="#efe9df"></a-box>
+        <!-- ===== GAZEBO RAILING (gap aligned to entrance = +Z / south) ===== -->
+        <!-- Parent Y=-115° rotates the torus gap to face +Z, matching the wall gap -->
+        <a-entity position="0 1.0 -10" rotation="0 -115 0">
+            <a-entity rotation="90 0 0" geometry="primitive: torus; radius: 2.8; radiusTubular: 0.05; arc: 310"
+                material="color: #d4cfc5; metalness: 0.3; roughness: 0.5">
+            </a-entity>
+        </a-entity>
+        <a-entity position="0 0.6 -10" rotation="0 -115 0">
+            <a-entity rotation="90 0 0" geometry="primitive: torus; radius: 2.8; radiusTubular: 0.05; arc: 310"
+                material="color: #d4cfc5; metalness: 0.3; roughness: 0.5">
+            </a-entity>
+        </a-entity>
 
-            <!-- Lighting -->
-            <a-entity light="type: ambient; intensity: 0.7"></a-entity>
-            <a-entity light="type: directional; intensity: 0.7" position="-2 6 2"></a-entity>
-        </a-scene>
-    </body>
+        <!-- ===== GAZEBO ROOF ===== -->
+        <!-- Roof ring -->
+        <a-cylinder position="0 3.15 -10" radius="3.0" height="0.18" color="#8b5e3c"
+            material="roughness:0.7; metalness:0.1"></a-cylinder>
+        <!-- Roof cone – rich terracotta -->
+        <a-cone position="0 4.3 -10" radius-bottom="3.3" radius-top="0.05" height="2.4" color="#c0522a"
+            material="roughness:0.8; metalness:0.05"></a-cone>
+        <!-- Cone cap finial -->
+        <a-sphere position="0 5.52 -10" radius="0.12" color="#f5cc60"
+            material="metalness:0.8; roughness:0.2"></a-sphere>
+
+        <!-- ===== DINING TABLE ===== -->
+        <!-- Tabletop -->
+        <a-cylinder position="0 0.95 -10" radius="1.1" height="0.08" color="#6b3f1e"
+            material="roughness:0.5; metalness:0.1"></a-cylinder>
+        <!-- Tabletop edge trim -->
+        <a-torus position="0 0.97 -10" rotation="90 0 0" geometry="primitive: torus; radius: 1.1; radiusTubular: 0.025"
+            material="color: #8b5523; metalness: 0.2; roughness: 0.5">
+        </a-torus>
+        <!-- Pedestal -->
+        <a-cylinder position="0 0.5 -10" radius="0.12" height="0.86" color="#5a3a1a"
+            material="roughness:0.7"></a-cylinder>
+        <!-- Base plate -->
+        <a-cylinder position="0 0.07 -10" radius="0.4" height="0.06" color="#5a3a1a"
+            material="roughness:0.7"></a-cylinder>
+
+        <!-- ===== CHAIRS =====
+             Chair local space: seat faces -Z, backrest at local +Z.
+             Y rotation turns the chair to face the table center.
+             Legs at 4 corners of the seat footprint. -->
+
+        <!-- Chair FRONT – faces table (person faces -Z, Y=0°) -->
+        <a-entity position="0 0 -8.5">
+            <!-- seat -->
+            <a-box position="0 0.35 0" width="0.62" depth="0.55" height="0.08" color="#6b3718"
+                material="roughness:0.7"></a-box>
+            <!-- backrest (at local +Z, behind person) -->
+            <a-box position="0 0.78 0.24" width="0.62" depth="0.08" height="0.80" color="#6b3718"
+                material="roughness:0.7"></a-box>
+            <!-- 4 legs -->
+            <a-box position="-0.25 0.175  0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position=" 0.25 0.175  0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position="-0.25 0.175 -0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position=" 0.25 0.175 -0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+        </a-entity>
+
+        <!-- Chair BACK – faces table (person faces +Z, Y=180°) -->
+        <a-entity position="0 0 -11.5" rotation="0 180 0">
+            <!-- seat -->
+            <a-box position="0 0.35 0" width="0.62" depth="0.55" height="0.08" color="#6b3718"
+                material="roughness:0.7"></a-box>
+            <!-- backrest -->
+            <a-box position="0 0.78 0.24" width="0.62" depth="0.08" height="0.80" color="#6b3718"
+                material="roughness:0.7"></a-box>
+            <!-- 4 legs -->
+            <a-box position="-0.25 0.175  0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position=" 0.25 0.175  0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position="-0.25 0.175 -0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position=" 0.25 0.175 -0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+        </a-entity>
+
+        <!-- Chair RIGHT – faces table center (person faces -X, Y=90°) -->
+        <a-entity position="1.6 0 -10" rotation="0 90 0">
+            <!-- seat -->
+            <a-box position="0 0.35 0" width="0.62" depth="0.55" height="0.08" color="#6b3718"
+                material="roughness:0.7"></a-box>
+            <!-- backrest -->
+            <a-box position="0 0.78 0.24" width="0.62" depth="0.08" height="0.80" color="#6b3718"
+                material="roughness:0.7"></a-box>
+            <!-- 4 legs -->
+            <a-box position="-0.25 0.175  0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position=" 0.25 0.175  0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position="-0.25 0.175 -0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position=" 0.25 0.175 -0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+        </a-entity>
+
+        <!-- Chair LEFT – faces table center (person faces +X, Y=-90°) -->
+        <a-entity position="-1.6 0 -10" rotation="0 -90 0">
+            <!-- seat -->
+            <a-box position="0 0.35 0" width="0.62" depth="0.55" height="0.08" color="#6b3718"
+                material="roughness:0.7"></a-box>
+            <!-- backrest -->
+            <a-box position="0 0.78 0.24" width="0.62" depth="0.08" height="0.80" color="#6b3718"
+                material="roughness:0.7"></a-box>
+            <!-- 4 legs -->
+            <a-box position="-0.25 0.175  0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position=" 0.25 0.175  0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position="-0.25 0.175 -0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+            <a-box position=" 0.25 0.175 -0.22" width="0.065" depth="0.065" height="0.35" color="#4e2510"
+                material="roughness:0.8"></a-box>
+        </a-entity>
+
+        <!-- ===== TABLE ITEMS ===== -->
+        <!-- Milo can (green) -->
+        <a-cylinder position="-0.35 1.11 -10" radius="0.18" height="0.32" color="#1a6e2c"></a-cylinder>
+        <a-cylinder position="-0.35 1.285 -10" radius="0.20" height="0.025" color="#0d4019"
+            material="metalness:0.4"></a-cylinder>
+
+        <!-- Milk carton (white) -->
+        <a-box position="0.30 1.12 -9.75" width="0.24" depth="0.24" height="0.38" color="#f5f5f5"
+            material="roughness:0.5"></a-box>
+        <a-cone position="0.30 1.33 -9.75" radius-bottom="0.14" radius-top="0.04" height="0.12" color="#e0e0e0"
+            material="roughness:0.5"></a-cone>
+
+        <!-- Mug 1 (white with hot chocolate) -->
+        <a-cylinder position=" 0.48 1.03 -10.22" radius="0.10" height="0.15" color="#ffffff"
+            material="roughness:0.4"></a-cylinder>
+        <a-torus position=" 0.57 1.04 -10.22" radius="0.048" radius-tubular="0.012" rotation="0 0 90" color="#ffffff"
+            material="roughness:0.4"></a-torus>
+        <a-cylinder position=" 0.48 1.105 -10.22" radius="0.088" height="0.015" color="#5c2d0a"></a-cylinder>
+
+        <!-- Mug 2 (white with hot chocolate) -->
+        <a-cylinder position="-0.62 1.03 -10.15" radius="0.10" height="0.15" color="#ffffff"
+            material="roughness:0.4"></a-cylinder>
+        <a-torus position="-0.71 1.04 -10.15" radius="0.048" radius-tubular="0.012" rotation="0 0 90" color="#ffffff"
+            material="roughness:0.4"></a-torus>
+        <a-cylinder position="-0.62 1.105 -10.15" radius="0.088" height="0.015" color="#5c2d0a"></a-cylinder>
+
+        <!-- Mug 3 – front-chair side (cream with hot chocolate) -->
+        <a-cylinder position=" 0.10 1.03 -9.55" radius="0.10" height="0.15" color="#f5e6cc"
+            material="roughness:0.4"></a-cylinder>
+        <a-torus position=" 0.19 1.04 -9.55" radius="0.048" radius-tubular="0.012" rotation="0 0 90" color="#f5e6cc"
+            material="roughness:0.4"></a-torus>
+        <a-cylinder position=" 0.10 1.105 -9.55" radius="0.088" height="0.015" color="#5c2d0a"></a-cylinder>
+
+        <!-- Mug 4 – back-chair side (light blue with hot chocolate) -->
+        <a-cylinder position="-0.10 1.03 -10.50" radius="0.10" height="0.15" color="#d0e8f5"
+            material="roughness:0.4"></a-cylinder>
+        <a-torus position="-0.19 1.04 -10.50" radius="0.048" radius-tubular="0.012" rotation="0 0 90" color="#d0e8f5"
+            material="roughness:0.4"></a-torus>
+        <a-cylinder position="-0.10 1.105 -10.50" radius="0.088" height="0.015" color="#5c2d0a"></a-cylinder>
+
+        <!-- Steam particles above all 4 mugs -->
+        <a-sphere position=" 0.48 1.30 -10.22" radius="0.015" color="#ffffff" material="opacity:0.55; transparent:true"
+            animation="property: position; to: 0.52 1.55 -10.22; dur: 2000; loop: true; easing: easeInOutSine; dir: alternate">
+        </a-sphere>
+        <a-sphere position="-0.62 1.30 -10.15" radius="0.015" color="#ffffff" material="opacity:0.55; transparent:true"
+            animation="property: position; to: -0.58 1.55 -10.15; dur: 2200; loop: true; easing: easeInOutSine; dir: alternate">
+        </a-sphere>
+        <a-sphere position=" 0.10 1.30 -9.55" radius="0.015" color="#ffffff" material="opacity:0.55; transparent:true"
+            animation="property: position; to: 0.14 1.55 -9.55; dur: 1800; loop: true; easing: easeInOutSine; dir: alternate">
+        </a-sphere>
+        <a-sphere position="-0.10 1.30 -10.50" radius="0.015" color="#ffffff" material="opacity:0.55; transparent:true"
+            animation="property: position; to: -0.06 1.55 -10.50; dur: 2400; loop: true; easing: easeInOutSine; dir: alternate">
+        </a-sphere>
+
+        <!-- ===== DECORATIVE TREES ===== -->
+        <!-- Tree 1 – left of path -->
+        <a-cylinder position="-3.5 0.8 -4" radius="0.15" height="1.6" color="#5a3319"></a-cylinder>
+        <a-sphere position="-3.5 2.2 -4" radius="1.0" color="#2e8b45" material="roughness:0.9; metalness:0"></a-sphere>
+        <a-sphere position="-3.5 2.8 -4" radius="0.7" color="#38a855" material="roughness:0.9; metalness:0"></a-sphere>
+
+        <!-- Tree 2 – right of path -->
+        <a-cylinder position=" 3.5 0.8 -4" radius="0.15" height="1.6" color="#5a3319"></a-cylinder>
+        <a-sphere position=" 3.5 2.2 -4" radius="1.0" color="#2e8b45" material="roughness:0.9; metalness:0"></a-sphere>
+        <a-sphere position=" 3.5 2.8 -4" radius="0.7" color="#38a855" material="roughness:0.9; metalness:0"></a-sphere>
+
+        <!-- Tree 3 – back left of gazebo -->
+        <a-cylinder position="-7 0.9 -12" radius="0.18" height="1.8" color="#5a3319"></a-cylinder>
+        <a-sphere position="-7 2.4 -12" radius="1.2" color="#257a39" material="roughness:0.9; metalness:0"></a-sphere>
+        <a-sphere position="-7 3.2 -12" radius="0.8" color="#2e9148" material="roughness:0.9; metalness:0"></a-sphere>
+
+        <!-- Tree 4 – back right of gazebo -->
+        <a-cylinder position=" 7 0.9 -12" radius="0.18" height="1.8" color="#5a3319"></a-cylinder>
+        <a-sphere position=" 7 2.4 -12" radius="1.2" color="#257a39" material="roughness:0.9; metalness:0"></a-sphere>
+        <a-sphere position=" 7 3.2 -12" radius="0.8" color="#2e9148" material="roughness:0.9; metalness:0"></a-sphere>
+
+        <!-- ===== FLOWER PATCHES ===== -->
+        <a-sphere position="-1.5 0.12 -3" radius="0.12" color="#ff6b6b"></a-sphere>
+        <a-sphere position="-2.1 0.12 -4" radius="0.10" color="#ffdb58"></a-sphere>
+        <a-sphere position=" 1.8 0.12 -3" radius="0.12" color="#ff9ff3"></a-sphere>
+        <a-sphere position=" 2.3 0.12 -5" radius="0.10" color="#ff6b6b"></a-sphere>
+        <a-sphere position="-6  0.13 -9" radius="0.11" color="#ffdb58"></a-sphere>
+        <a-sphere position="-6.5 0.13 -11" radius="0.12" color="#ff9ff3"></a-sphere>
+        <a-sphere position=" 6  0.13 -9" radius="0.11" color="#ff6b6b"></a-sphere>
+        <a-sphere position=" 6.5 0.13 -11" radius="0.12" color="#ffdb58"></a-sphere>
+
+        <!-- ===== LIGHTING ===== -->
+        <!-- Ambient – soft warm -->
+        <a-entity light="type: ambient; color: #fff8ee; intensity: 0.6"></a-entity>
+        <!-- Sun – warm directional -->
+        <a-entity light="type: directional; color: #fff5d6; intensity: 1.1; castShadow: true"
+            position="-3 10 5"></a-entity>
+        <!-- Fill light from opposite side -->
+        <a-entity light="type: directional; color: #cce4ff; intensity: 0.35" position="5 4 -5"></a-entity>
+        <!-- Warm point light inside gazebo -->
+        <a-entity light="type: point; color: #ffe6b0; intensity: 0.8; distance: 8; decay: 2"
+            position="0 2.8 -10"></a-entity>
+
+        <!-- Camera with nice starting look-at angle -->
+        <a-camera position="0 1.6 3" look-controls wasd-controls>
+            <a-cursor color="#ffffff" opacity="0.7"></a-cursor>
+        </a-camera>
+    </a-scene>
+</body>
+
 </html>
